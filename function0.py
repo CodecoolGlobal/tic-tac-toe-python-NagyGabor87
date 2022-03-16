@@ -9,8 +9,16 @@ def display_board(board):
     C   0 | X | . 
        --+---+---
   """
-  pass
-
+  
+print("\n")
+print(f'    1      2      3' )
+print("\n")
+print(f'A  "." |  "." |  "."')
+print(f'  -----+------+-----')
+print(f'B  "." |  "." |  "."')
+print(f'  -----+------+-----')
+print(f'C  "." |  "." |  "."')
+print(f'  -----+------+-----')
 
 
 if __name__ == "__main__":
@@ -29,3 +37,14 @@ if __name__ == "__main__":
     #    --+---+---
     # C   0 | X | . 
     #    --+---+---
+
+
+print(display_board(board))
+
+list = []
+for r in range(3):
+   list.append([])
+   for c in range(3):
+      list[r].append('.')
+
+print(list)
