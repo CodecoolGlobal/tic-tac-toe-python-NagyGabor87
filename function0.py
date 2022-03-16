@@ -9,16 +9,9 @@ def display_board(board):
     C   0 | X | . 
        --+---+---
   """
-  
-print("\n")
-print(f'    1      2      3' )
-print("\n")
-print(f'A  "." |  "." |  "."')
-print(f'  -----+------+-----')
-print(f'B  "." |  "." |  "."')
-print(f'  -----+------+-----')
-print(f'C  "." |  "." |  "."')
-print(f'  -----+------+-----')
+  for row, row_index in zip(board, ("A","B","C")):
+     print(f'{row_index}   {row[0]}  |  {row[1]}  |  {row[2]}')
+     print(f'    ---+-----+----')
 
 
 if __name__ == "__main__":
@@ -39,12 +32,6 @@ if __name__ == "__main__":
     #    --+---+---
 
 
-print(display_board(board))
 
-list = []
-for r in range(3):
-   list.append([])
-   for c in range(3):
-      list[r].append('.')
 
-print(list)
+

@@ -11,7 +11,7 @@ def get_empty_board():
     board.append(row2)
     board.append(row3)
     return board
-    pass
+
 
 
 if __name__ == "__main__":
