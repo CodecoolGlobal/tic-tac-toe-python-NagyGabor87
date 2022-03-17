@@ -3,8 +3,23 @@ def get_winning_player(board):
   Should return the player that wins based on the tic tac toe rules.
   If no player has won, than "None" is returned.
   """
+  b = True
+  while b:
+    player_symbols = ("X","O")
+    for player in player_symbols: 
+      for row in board:
+        if row[0] == row[1] == row[2] == player:
+          return player
 
-
+      for i in range(len(board)):
+        if board[0][i] == board[1][i] == board[2][i] == player:
+          return player
+      
+      if board[0][0] == board[1][1] == board[2][2] == player or board[0][2] == board[1][1] == board[2][0] == player:
+        return player
+    else:
+      return None  
+  
 
 
 
