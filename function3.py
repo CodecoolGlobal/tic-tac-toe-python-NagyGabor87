@@ -16,7 +16,8 @@ def get_human_coordinates(board, current_player):
   valid_input = ("A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3")
   if player_input == "QUIT":
     quit()
-  player_coord_input = [(player_input[:1]), int(player_input[1:])]   
+  player_coord_input = [(player_input[:1]), int(player_input[1:])]
+  print(player_coord_input[1])
   if player_input in valid_input:
     if player_coord_input[0] == "A":
       player_coord_input[0] = 0
@@ -38,7 +39,6 @@ def get_human_coordinates(board, current_player):
   else:
     print("Invalid coordinate")
 
-
   # if player_coord_input in valid_input:
   # player_coord_input.format(0)
   print(player_coord_input)
@@ -48,7 +48,11 @@ def get_human_coordinates(board, current_player):
     for j in range(len(board)):
       if board[i][j] == ".":
         l.append((i,j))
-  return l
+      else:
+        board[i][j] == player_input
+        print("The coordinate is already taken")
+        return None
+  return (l)
 
 
 
