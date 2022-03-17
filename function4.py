@@ -6,7 +6,18 @@ def get_random_ai_coordinates(board, current_player):
   If the board is full (all spots taken by either X or O) than "None"
   should be returned.
   """
-  pass
+  import random
+
+  random_numbers = []
+  for i in range(len(board)):
+    for j in range(len(board)):
+      if board[i][j] == ".":
+        random_numbers.append((i, j))
+        location = random.choice(random_numbers)
+        return location
+  else:
+    return None
+  
 
 
 if __name__ == "__main__":
