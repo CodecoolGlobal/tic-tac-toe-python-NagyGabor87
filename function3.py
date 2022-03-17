@@ -1,6 +1,6 @@
 
 
-def get_human_coordinates(board, current_player):
+def get_human_coordinates(board, player_input):
   """
   Should return the read coordinates for the tic tac toe board from the terminal.
   The coordinates should be in the format letter, number where the letter is 
@@ -12,47 +12,42 @@ def get_human_coordinates(board, current_player):
   If the user enters the word "quit" in any format of capitalized letters the program
   should stop.
   """
-  player_input = input("Choose a coordinate (for example: A2, C1): ").upper()
-  valid_input = ("A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3")
-  if player_input == "QUIT":
-    quit()
-  player_coord_input = [(player_input[:1]), int(player_input[1:])]
-  print(player_coord_input[1])
-  if player_input in valid_input:
-    if player_coord_input[0] == "A":
-      player_coord_input[0] = 0
-    elif player_coord_input[0] == "B":
-      player_coord_input[0] = 1
-    elif player_coord_input[0] == "C":
-      player_coord_input[0] = 2
-    if player_coord_input[1] == 1:
-      player_coord_input[1] = 0
-    elif player_coord_input[1] == 2:
-      player_coord_input[1] = 1
-    elif player_coord_input[1] == 3:
-      player_coord_input[1] = 2
-    player_coord_input = tuple(player_coord_input)
+  found = False
+  while not found:
+    player_input = input("Choose a coordinate (for example: A2, C1): ").upper()
+    valid_input = ("A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3")
+    if player_input == "QUIT":
+      quit()
+    player_coord_input = []
     already_tried_coord = []
-    already_tried_coord.append(player_coord_input)
-    if player_coord_input is current_player:
-      print("Coordinate is already taken")
-  else:
-    print("Invalid coordinate")
+    if player_input in valid_input:
+      player_coord_input = [(player_input[:1]), int(player_input[1:])]
+      if player_coord_input[0] == "A":
+        player_coord_input[0] = 0
+      elif player_coord_input[0] == "B":
+        player_coord_input[0] = 1
+      elif player_coord_input[0] == "C":
+        player_coord_input[0] = 2
+      if player_coord_input[1] == 1:
+        player_coord_input[1] = 0
+      elif player_coord_input[1] == 2:
+        player_coord_input[1] = 1
+      elif player_coord_input[1] == 3:
+        player_coord_input[1] = 2
+      player_coord_input = tuple(player_coord_input)
+      already_tried_coord.append(player_coord_input)
+    else:
+      print("Invalid coordinate")
+      continue
 
-  # if player_coord_input in valid_input:
-  # player_coord_input.format(0)
-  print(player_coord_input)
-  # if player_input in valid_input:
-  l = []
-  for i in range(len(board)):
-    for j in range(len(board)):
-      if board[i][j] == ".":
-        l.append((i,j))
-      else:
-        board[i][j] == player_input
-        print("The coordinate is already taken")
-        return None
-  return (l)
+    if board[player_coord_input[0]][player_coord_input[1]] != ".":
+      print("The coordinate is already taken")
+      continue
+    found = True
+    
+  return player_coord_input
+  
+
 
 
 
