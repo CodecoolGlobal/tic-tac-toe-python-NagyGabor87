@@ -3,7 +3,12 @@ def is_board_full(board):
   should return True if there are no more empty place on the board,
   otherwise should return False
   """
-  pass
+  for row in board:
+    for item in row:
+      if item == ".":
+        return False
+  return True
+
 
 
 if __name__ == "__main__":

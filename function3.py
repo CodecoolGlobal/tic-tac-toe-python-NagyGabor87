@@ -14,6 +14,8 @@ def get_human_coordinates(board, current_player):
   """
   player_input = input("Choose a coordinate (for example: A2, C1): ").upper()
   valid_input = ("A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3")
+  if player_input == "QUIT":
+    quit()
   player_coord_input = [(player_input[:1]), int(player_input[1:])]
   print(player_coord_input[1])
   if player_input in valid_input:
@@ -45,6 +47,10 @@ def get_human_coordinates(board, current_player):
     for j in range(len(board)):
       if board[i][j] == ".":
         l.append((i,j))
+      else:
+        board[i][j] == player_input
+        print("The coordinate is already taken")
+        return None
   return (l)
 
 
@@ -68,3 +74,7 @@ if __name__ == "__main__":
 # for i in new_list:
 #   element = str(new_list[0], [1], [2]) + new_tuple[0], [1], [2]
 # print(element)
+  #  return player_coord_input-ot kell visszadobnia a fenti functionban
+  # new = get_human_coordinates(board_1, 0)
+  # board_1[new[0]][new[1]] = 'X'
+  # print(board_1)

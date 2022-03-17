@@ -1,24 +1,11 @@
+
+
 def display_board(board):
-  """
-  Should print the tic tac toe board in a format similar to
-       1   2   3
-    A   X | O | . 
-       ---+---+---
-    B   X | O | .
-       --+---+---
-    C   0 | X | . 
-       --+---+---
-  """
-  
-print("\n")
-print(f'    1      2      3' )
-print("\n")
-print(f'A  "." |  "." |  "."')
-print(f'  -----+------+-----')
-print(f'B  "." |  "." |  "."')
-print(f'  -----+------+-----')
-print(f'C  "." |  "." |  "."')
-print(f'  -----+------+-----')
+   print(f'\n     1.       2.       3.  \n')
+
+   for row, row_index in zip(board, ("A", "B", "C")):
+      print(f'{row_index}    {row[0]}   |    {row[1]}    |   {row[2]}   | ')
+      print(f'  - - - - - - - - - - - - - ')
 
 
 if __name__ == "__main__":
@@ -39,12 +26,10 @@ if __name__ == "__main__":
     #    --+---+---
 
 
-print(display_board(board))
+# list = []
+# for r in range(3):
+#    list.append([])
+#    for c in range(3):
+#       list[r].append('.')
 
-list = []
-for r in range(3):
-   list.append([])
-   for c in range(3):
-      list[r].append('.')
-
-print(list)
+# print(list)
