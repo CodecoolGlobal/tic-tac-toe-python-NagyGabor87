@@ -23,7 +23,12 @@ def main():
         ### TO DO ###
         # in each new iteration of the while loop the program should 
         # alternate the value of `current_player` from `X` to `O`
-        current_player = 'X'
+        if game_mode == "1":
+            current_player = input('Please choose from X or O: ').upper()
+            if current_player == 'X':
+                current_player = 'X'
+            else:
+                current_player = 'O'
         
         ### TO DO ###
         # based on the value of the variables `game_mode` and `current_player` 
@@ -32,7 +37,17 @@ def main():
         x, y = get_human_coordinates(board, current_player)
         
         board[x][y] = current_player
-        
+        winning_player = get_winning_player(board)
+        its_a_tie = is_board_full(board)
+        if winning_player == 'X':
+            print('X won the game')
+            
+        elif winning_player == 'O':
+            print('O won the game')
+            
+        else:
+            if not winning_player and its_a_tie == True:
+                print("It's a tie!")
         ### TO DO ###
         # based on the values of `winning_player` and `its_a_tie` the program
         # should either stop displaying a winning/tie message 
