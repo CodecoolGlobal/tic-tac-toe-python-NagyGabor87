@@ -6,6 +6,7 @@ from function4 import get_random_ai_coordinates
 # from function5 import get_umbeatable_ai_coordinates
 from function6 import get_winning_player
 from function7 import is_board_full
+import time
 
 
 HUMAN_VS_HUMAN = 1
@@ -38,6 +39,7 @@ def main():
             x, y = get_random_ai_coordinates(board, current_player)
             is_game_running = board_check(board)
             board[x][y] = current_player
+            time.sleep(2)
             x, y = get_random_ai_coordinates(board, current_player)
             is_game_running = board_check(board)
             board[x][y] = 'O'
