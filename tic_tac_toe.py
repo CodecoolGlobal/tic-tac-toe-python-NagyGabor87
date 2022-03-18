@@ -30,8 +30,8 @@ def main():
             else:
                 current_player = 'X'
             x, y = get_human_coordinates(board, current_player)
-            is_game_running = board_check(board)
             board[x][y] = current_player
+            is_game_running = board_check(board)
 
         if game_mode == "2":
             current_player = 'X'
@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
 # TO DO ###
 # based on the values of `winning_player` and `its_a_tie` the program
-# should either stop displaying a winning/tie message 
+# should either stop displaying a winning/tie message
 # OR continue the while loop
 
 # TO DO ###
@@ -87,5 +87,5 @@ if __name__ == "__main__":
 # get_random_ai_coordinates or get_umbeatable_ai_coordinates or get_human_coordinate
 
 # TO DO ###
-# in each new iteration of the while loop the program should 
+# in each new iteration of the while loop the program should
 # alternate the value of `current_player` from `X` to `O`
