@@ -32,48 +32,60 @@ def main():
             else:
                 current_player = 'X'
             x, y = get_human_coordinates(board, current_player)
-        
+            is_game_running = board_check(board)
             board[x][y] = current_player
+         
+
 
         if game_mode == "2":
             current_player = 'X'
             x, y = get_random_ai_coordinates(board,current_player)
+            is_game_running = board_check(board)
             board[x][y] = current_player
             x, y = get_random_ai_coordinates(board,current_player)
+            is_game_running = board_check(board)
             board[x][y] = 'O'
+            
 
         if game_mode == "3":
             current_player = 'X'
             x, y = get_human_coordinates(board, current_player)
-            board[x][y] = current_player  
+            is_game_running = board_check(board)
+            board[x][y] = current_player
             x, y = get_random_ai_coordinates(board,current_player)
+            is_game_running = board_check(board)
             board[x][y] = 'O'
-
+           
+            
         
         ### TO DO ###
         # based on the value of the variables `game_mode` and `current_player` 
         # the programm should should choose betwen the functions
         # get_random_ai_coordinates or get_umbeatable_ai_coordinates or get_human_coordinate
 
+def board_check(board):
 
-        winning_player = get_winning_player(board)
+    winning_player = get_winning_player(board)
 
-        its_a_tie = is_board_full(board)
-        if winning_player == 'X':
-            display_board(board)
-            print('X won the game')
-            is_game_running=False  
+    its_a_tie = is_board_full(board)
+    if winning_player == 'X':
+        display_board(board)
+        print('X won the game')
+        return False
 
-        elif winning_player == 'O':
-            display_board(board)
-            print('O won the game')
-            is_game_running=False 
-        else:
-            if not winning_player and its_a_tie == True:
-                display_board(board)
-                print("It's a tie")
-                is_game_running=False 
-                
+    elif winning_player == 'O':
+        display_board(board)
+        print('O won the game')
+        return False
+    
+    elif not winning_player and its_a_tie:
+        display_board(board)
+        print("It's a tie")
+        return False
+    return True
+        
+
+              
         ### TO DO ###
         # based on the values of `winning_player` and `its_a_tie` the program
         # should either stop displaying a winning/tie message 
