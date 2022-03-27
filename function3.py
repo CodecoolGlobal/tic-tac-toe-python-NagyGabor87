@@ -44,9 +44,9 @@ def get_human_coordinates(board, player_input):
       print("The coordinate is already taken")
       continue
     found = True
-    
+
   return player_coord_input
-  
+
 
 
 
