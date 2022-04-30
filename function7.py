@@ -10,6 +10,15 @@ def is_board_full(board):
   return True
 
 
+# vagy lehetne:
+
+def is_board_full(board):
+  for row in range(len(board)):
+    for item in range(len(board)):
+      if board[row][item] == ".":
+        return False
+  return True
+
 
 if __name__ == "__main__":
   # run this file to test you have implemented correctly the function
