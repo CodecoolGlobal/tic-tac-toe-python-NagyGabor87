@@ -3,14 +3,15 @@ def get_empty_board():
     Should return a list with 3 sublists.
     Each sublist should contain 3 time the "." character
     '''
-    row1 = ['.', '.', '.']
-    row2 = ['.', '.', '.']
-    row3 = ['.', '.', '.']
     board = []
-    board.append(row1)
-    board.append(row2)
-    board.append(row3)
+    for _ in range(3):
+        row = []
+        for _ in range(3):
+            row.append('.')
+        board.append(row)
     return board
+        
+
 
 
 if __name__ == "__main__":

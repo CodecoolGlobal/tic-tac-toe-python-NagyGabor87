@@ -1,9 +1,9 @@
 def display_board(board):
-   print(f'\n     1.       2.       3.  \n')
+   print(f'\n       1        2        3  \n')
 
    for row, row_index in zip(board, ("A", "B", "C")):
-      print(f'{row_index}    {row[0]}   |    {row[1]}    |   {row[2]}   | ')
-      print(f'  - - - - - - - - - - - - - ')
+      print(f'{row_index}      {row[0]}   |    {row[1]}    |   {row[2]}   | ')
+      print(f'    - - -  +   - - - + - - - - ')
 
 
 if __name__ == "__main__":

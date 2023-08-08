@@ -6,9 +6,9 @@ def get_human_coordinates(board, player_input):
   The coordinates should be in the format letter, number where the letter is 
   A, B or C and the number 1, 2 or 3.
   If the user enters an invalid coordinate (like Z0 or 1A, A11, sadfdsaf) 
-  than a warning message should appear and the coordinates reading process repeated.
+  then a warning message should appear and the coordinates reading process repeated.
   If the user enters a coordinate that is already taken on the board.
-  than a warning message should appear and the coordinates reading process repeated.
+  then a warning message should appear and the coordinates reading process repeated.
   If the user enters the word "quit" in any format of capitalized letters the program
   should stop.
   """
@@ -19,33 +19,35 @@ def get_human_coordinates(board, player_input):
     if player_input == "QUIT":
       quit()
     player_coord_input = []
-    already_tried_coord = []
     if player_input in valid_input:
       player_coord_input = [(player_input[:1]), int(player_input[1:])]
-      if player_coord_input[0] == "A":
-        player_coord_input[0] = 0
-      elif player_coord_input[0] == "B":
-        player_coord_input[0] = 1
-      elif player_coord_input[0] == "C":
-        player_coord_input[0] = 2
-      if player_coord_input[1] == 1:
-        player_coord_input[1] = 0
-      elif player_coord_input[1] == 2:
-        player_coord_input[1] = 1
-      elif player_coord_input[1] == 3:
-        player_coord_input[1] = 2
-      player_coord_input = tuple(player_coord_input)
-      already_tried_coord.append(player_coord_input)
+      row = 0
+      col = 0
+      match player_coord_input[0]:
+        case "A":
+          row = 0
+        case "B":
+          row = 1
+        case "C":
+          row = 2
+      match player_coord_input[1]:
+        case 1:
+          col = 0
+        case 2:
+          col = 1
+        case 3:
+          col = 2        
+      coordinates = (row,col)
     else:
       print("Invalid coordinate")
       continue
 
-    if board[player_coord_input[0]][player_coord_input[1]] != ".":
+    if board[coordinates[0]][coordinates[1]] != ".":
       print("The coordinate is already taken")
       continue
     found = True
 
-  return player_coord_input
+  return coordinates
 
 
 
@@ -61,15 +63,3 @@ if __name__ == "__main__":
   coordinates = get_human_coordinates(board_1, "X")
   print(coordinates) # the only possible returned value can be (0,2) or (1,1) or (1, 2) or (2,2) because they are the only valid ones
 
-# new_list = [0, 1, 2]
-# new_tuple = ["A", "B", "C"]
-# new_tuple.index(new_tuple, len(new_list))
-# for n in new_list:
-#   new_list.append(new_tuple[n])
-# print(new_tuple)
-# for i in new_list:
-#   element = str(new_list[0], [1], [2]) + new_tuple[0], [1], [2]
-# print(element)
-  # new = get_human_coordinates(board_1, 0)
-  # board_1[new[0]] [new[1]] = 'X'
-  # print(board_1)
