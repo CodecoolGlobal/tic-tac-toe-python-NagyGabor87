@@ -1,11 +1,11 @@
-from function0 import display_board
-from function1 import get_menu_option
-from function2 import get_empty_board
-from function3 import get_human_coordinates
-from function4 import get_random_ai_coordinates
-# from function5 import get_umbeatable_ai_coordinates
-from function6 import get_winning_player
-from function7 import is_board_full
+from display_board import display_board
+from get_menu_option import get_menu_option
+from create_empty_board import get_empty_board
+from get_human_coordinates import get_human_coordinates
+from get_random_ai_coordinates import get_random_ai_coordinates
+from get_unbeatable_ai_coordinates import get_unbeatable_ai_coordinates
+from get_winning_player import get_winning_player
+from is_board_full import is_board_full
 import time
 
 
@@ -22,37 +22,50 @@ def main():
     is_game_running = True
     while is_game_running:
         display_board(board)
-
-        if game_mode == "1":
-            current_player = 'X'
-            turn += 1
-            if turn % 2 == 0:
-                current_player = 'O'
-            else:
+        match game_mode:
+            case "1":
                 current_player = 'X'
-            x, y = get_human_coordinates(board, current_player)
-            board[x][y] = current_player
-            is_game_running = board_check(board)
+                turn += 1
+                if turn % 2 == 0:
+                    current_player = 'O'
+                else:
+                    current_player = 'X'
+                x, y = get_human_coordinates(board, current_player)
+                board[x][y] = current_player
+                is_game_running = board_check(board)
 
-        if game_mode == "2":
-            current_player = 'X'
-            x, y = get_random_ai_coordinates(board, current_player)
-            is_game_running = board_check(board)
-            board[x][y] = current_player
-            time.sleep(2)
-            x, y = get_random_ai_coordinates(board, current_player)
-            is_game_running = board_check(board)
-            board[x][y] = 'O'
+            case "2":
+                current_player = 'X'
+                x, y = get_random_ai_coordinates(board, current_player)
+                board[x][y] = current_player
+                is_game_running = board_check(board)
+                time.sleep(2)
+                x, y = get_random_ai_coordinates(board, current_player)
+                board[x][y] = 'O'
+                is_game_running = board_check(board)
 
-        if game_mode == "3":
-            current_player = 'X'
-            x, y = get_human_coordinates(board, current_player)
-            is_game_running = board_check(board)
-            board[x][y] = current_player
-            x, y = get_random_ai_coordinates(board, current_player)
-            is_game_running = board_check(board)
-            board[x][y] = 'O'
+            case "3":
+                current_player = 'X'
+                x, y = get_human_coordinates(board, current_player)
+                board[x][y] = current_player
+                is_game_running = board_check(board)
+                try:
+                    x, y = get_random_ai_coordinates(board, current_player)
+                except TypeError:
+                    continue    
+                board[x][y] = 'O'
+                is_game_running = board_check(board)
 
+            case "4":
+                current_player = 'X'
+                x, y = get_human_coordinates(board, current_player)
+                board[x][y] = current_player
+                is_game_running = board_check(board)
+                if is_game_running:
+                    x, y = get_unbeatable_ai_coordinates(board, current_player)
+                    board[x][y] = 'O'
+                    is_game_running = board_check(board)
+        
 
 def board_check(board):
 

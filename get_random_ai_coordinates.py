@@ -13,10 +13,10 @@ def get_random_ai_coordinates(board, current_player):
     for j in range(len(board)):
       if board[i][j] == ".":
         random_numbers.append((i, j))
-        location = random.choice(random_numbers)
-        return location
-  else:
+  if len(random_numbers) == 0:
     return None
+  location = random.choice(random_numbers)
+  return location
   
 
 
