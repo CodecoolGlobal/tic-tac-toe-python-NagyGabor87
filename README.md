@@ -7,8 +7,8 @@ The player who succeeds in placing three of their marks in a horizontal, vertica
 ## Technical information
 * Python 3.10
   
-The project was built mainy to understand the usage of the [if __name__ == "__main__"](https://realpython.com/if-name-main-python/) condition,
-and to create multiple "script functions" to import them to the main file.
+The project was built mainly to create and understand the usage of multiple files and modules and to import them to the main file.
+It is a project to study the Pyton program even deeper than before
 The game is playable with two persons, and with an easy and advanced AI as well.
 
 ## Project Setup
